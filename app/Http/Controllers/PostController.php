@@ -37,8 +37,23 @@ class PostController extends Controller
 
         // ログイン中のユーザーの情報を取得する
         $loginUser = Session::get('user');
+        $rules = [
+            'task_name' => 'required|max:140',
+        ];
+
+        $messages = [
+            'required' => '必須項目です',
+            'max' => '140文字以下にしてください。'
+        ];
+
+        Validator::make(
+            $request->all(),
+            $rules,
+            $messages
+        )->validate();
 
         // データ登録
+
         $post = new Post;
         $post->user = $loginUser->id;
         $post->content = $request->postContent;
