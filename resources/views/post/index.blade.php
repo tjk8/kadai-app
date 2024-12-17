@@ -22,6 +22,13 @@
             </div>
         </form>
     </div>
+    @error('postContent')
+    <div class="mt-3">
+        <p class="text-red-500">
+            {{ $message }}
+        </p>
+    </div>
+    @enderror
 </body>
 <script src="{{ asset('/js/app.js') }}"></script>
 <style scoped>
@@ -29,12 +36,12 @@
         display: flex;
         flex-direction: column;
     }
-    
+
     .post-page .post-button {
         text-align: end;
         margin: 20px 20px 0 0;
     }
-    
+
     .post-page button {
         height: 35px;
         width: 90px;

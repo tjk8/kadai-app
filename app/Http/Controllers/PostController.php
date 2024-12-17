@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Post;
 use App\Http\Controllers\Controller,
     Session;
+use Illuminate\Support\Facades\Validator;
 
 class PostController extends Controller
 {
@@ -37,8 +38,9 @@ class PostController extends Controller
 
         // ログイン中のユーザーの情報を取得する
         $loginUser = Session::get('user');
+
         $rules = [
-            'task_name' => 'required|max:140',
+            'postContent' => 'required|max:140',
         ];
 
         $messages = [
